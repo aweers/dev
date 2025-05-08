@@ -4,18 +4,18 @@ dry_run=false
 commands=()
 while [[ $# -gt 0 ]]; do
 	case "$1" in
-		--dry)
-			dry_run=true
-			shift
-			;;
-		-*)
-			echo "Unknown option: $1"
-			exit $1
-			;;
-		*)
-			commands+=("$1")
-			shift
-			;;
+	--dry)
+		dry_run=true
+		shift
+		;;
+	-*)
+		echo "Unknown option: $1"
+		exit $1
+		;;
+	*)
+		commands+=("$1")
+		shift
+		;;
 	esac
 done
 
@@ -25,10 +25,10 @@ fi
 
 run_commands() {
 	echo "Running commands for $1"
-	src="./runs/$1"
+	src="./runs/$1.sh"
 
 	if [[ -f "$src" ]]; then
-		sudo $src
+		$src
 	else
 		echo "No commands found for $1, skipping"
 	fi
@@ -58,5 +58,4 @@ update_config() {
 
 for cmd in "${commands[@]}"; do
 	run_commands $cmd
-	update_config $cmd
 done
