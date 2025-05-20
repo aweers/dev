@@ -57,6 +57,8 @@ vim.lsp.enable({
 	"pyright",
 	"ruff",
 	"luals",
+	"bashls",
+	"clangd",
 })
 
 require("keymaps")

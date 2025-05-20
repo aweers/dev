@@ -217,8 +217,11 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
-				bash = { "shfmt" },
-				sh = { "shfmt" },
+				bash = { "shfmt", "shellcheck" },
+				sh = { "shfmt", "shellcheck" },
+				c = { "clang" },
+				cpp = { "clang" },
+				cuda = { "clang" },
 			},
 		},
 	},

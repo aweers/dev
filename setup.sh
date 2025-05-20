@@ -10,7 +10,7 @@ while [[ $# -gt 0 ]]; do
 		;;
 	-*)
 		echo "Unknown option: $1"
-		exit $1
+		exit "$1"
 		;;
 	*)
 		commands+=("$1")
