@@ -61,12 +61,15 @@ vim.lsp.enable({
 	"clangd",
 })
 
+vim.opt.conceallevel = 1 -- for obsidian.nvim
+
 require("keymaps")
 require("plugins.lazy")
 require("plugins.gitsigns")
 require("plugins.mini")
 require("plugins.which-key")
 require("plugins.catppuccin")
+require("plugins.obsidian")
 
 -- vim.cmd.colorscheme "catppuccin"
 vim.cmd([[colorscheme moonfly]])
