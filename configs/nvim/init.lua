@@ -70,3 +70,4 @@ require("plugins.catppuccin")
 
 -- vim.cmd.colorscheme "catppuccin"
 vim.cmd([[colorscheme moonfly]])
+vim.cmd(":Copilot disable")

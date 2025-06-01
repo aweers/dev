@@ -17,7 +17,6 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"folke/which-key.nvim",
 	{
-
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
@@ -236,6 +235,9 @@ require("lazy").setup({
 	},
 	{
 		"bullets-vim/bullets.vim",
+	},
+	{
+		"github/copilot.vim",
 	},
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
