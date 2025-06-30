@@ -95,17 +95,18 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "nvim-treesitter/nvim-treesitter-context" },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},
 		-- stylua: ignore
 		keys = {
-			{ "<CR>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-			{ "<leader><CR>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+			{ "<CR>",         mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+			{ "<leader><CR>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "r",            mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+			{ "R",            mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>",        mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		},
 	},
 	{ -- Fuzzy Finder (files, lsp, etc)
@@ -129,7 +130,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -226,8 +227,8 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim",                        name = "catppuccin", priority = 1000 },
+	{ "bluz71/vim-moonfly-colors",              name = "moonfly",    lazy = false,   priority = 1000 },
 	{
 		"nvzone/typr",
 		dependencies = "nvzone/volt",
