@@ -59,6 +59,7 @@ vim.lsp.enable({
 	"luals",
 	"bashls",
 	"clangd",
+	"gopls",
 })
 
 vim.opt.conceallevel = 1 -- for obsidian.nvim
