@@ -1,13 +1,62 @@
 #!/usr/bin/env bash
 
-dry_run=false
+create_symlink() {
+	local source_path="$1"
+	local target_path="$2"
+
+	echo "Attempting to link: $source_path -> $target_path"
+
+	# Check if the source exists
+	if [ ! -e "$source_path" ]; then
+		echo "Error: Source does not exist: $source_path"
+		return 1
+	fi
+
+	# Create parent directory if it doesn't exist for the target
+	local target_dir=$(dirname "$target_path")
+	if [ ! -d "$target_dir" ]; then
+		echo "Creating directory: $target_dir"
+		mkdir -p "$target_dir" || {
+			echo "Error: Failed to create directory $target_dir"
+			return 1
+		}
+	fi
+
+	# Remove existing link/file/directory at the target path
+	if [ -L "$target_path" ]; then
+		echo "Removing existing symlink: $target_path"
+		rm "$target_path"
+	elif [ -d "$target_path" ]; then
+		echo "Warning: Directory already exists at $target_path. Backing up and replacing."
+		mv "$target_path" "$target_path.bak.$(date +%Y%m%d%H%M%S)"
+	elif [ -f "$target_path" ]; then
+		echo "Warning: File already exists at $target_path. Backing up and replacing."
+		mv "$target_path" "$target_path.bak.$(date +%Y%m%d%H%M%S)"
+	fi
+
+	# Create the symbolic link
+	ln -s "$source_path" "$target_path"
+	if [ $? -eq 0 ]; then
+		echo "Successfully linked: $target_path"
+	else
+		echo "Error: Failed to create symlink for $target_path"
+		return 1
+	fi
+}
+
+# Argument parsing
+# First argument is path to dotfiles dir
+# Additional arguments specify which configs to link
+DOTFILES_DIR=$(cd "$1" && pwd -P)
+if [ $? -ne 0 ]; then
+    echo "Error: Could not resolve absolute path for $1. Does it exist?"
+    exit 1
+fi
+shift
+
 commands=()
 while [[ $# -gt 0 ]]; do
 	case "$1" in
-	--dry)
-		dry_run=true
-		shift
-		;;
 	-*)
 		echo "Unknown option: $1"
 		exit "$1"
@@ -19,43 +68,31 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
-if $dry_run; then
-	echo "Dry run, not executing commands"
-fi
+echo "Starting dotfiles linking process..."
+echo "Dotfiles directory: $DOTFILES_DIR"
 
-run_commands() {
-	echo "Running commands for $1"
-	src="./runs/$1.sh"
-
-	if [[ -f "$src" ]]; then
-		$src
-	else
-		echo "No commands found for $1, skipping"
-	fi
-}
-
-update_config() {
-	echo "Processing: $1"
-	src="./configs/$1"
-	dest="$HOME/.config/$1"
-
-	if [[ -d "$src" ]]; then
-		echo "Found: $src"
-		if $dry_run; then
-			echo "[Dry-run] Would delete $dest"
-			echo "[Dry-run] Would copy $src to $dest"
-		else
-			echo "Deleting $dest"
-			rm -rf "$dest"
-
-			echo "Copying $src to $dest"
-			cp -r "$src" "$dest"
-		fi
-	else
-		echo "Did not find: $src"
-	fi
-}
+mkdir -p "$HOME/.config"
 
 for cmd in "${commands[@]}"; do
-	run_commands $cmd
+	case "$cmd" in
+	"zsh")
+		create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
+		;;
+	"tmux")
+		create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+		create_symlink "$DOTFILES_DIR/tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
+		;;
+	"git")
+		create_symlink "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+		;;
+	"nvim")
+		create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+		;;
+	"aerospace")
+		create_symlink "$DOTFILES_DIR/aerospace" "$HOME/.config/aerospace"
+		;;
+	*)
+		echo "Unknown install command: <$cmd>"
+		;;
+	esac
 done
