@@ -49,8 +49,8 @@ create_symlink() {
 # Additional arguments specify which configs to link
 DOTFILES_DIR=$(cd "$1" && pwd -P)
 if [ $? -ne 0 ]; then
-    echo "Error: Could not resolve absolute path for $1. Does it exist?"
-    exit 1
+	echo "Error: Could not resolve absolute path for $1. Does it exist?"
+	exit 1
 fi
 shift
 
@@ -83,7 +83,18 @@ for cmd in "${commands[@]}"; do
 		create_symlink "$DOTFILES_DIR/tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
 		;;
 	"git")
-		create_symlink "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+		GIT_ALIASES_TARGET="$HOME/.config/git/aliases"
+		create_symlink "$DOTFILES_DIR/git/aliases" "$GIT_ALIASES_TARGET"
+		echo ""
+		echo "--- IMPORTANT GIT CONFIGURATION STEP ---"
+		echo "Your Git aliases from dotfiles have been linked to: $GIT_ALIASES_TARGET"
+		echo "Please ensure your main ~/.gitconfig file contains the following lines:"
+		echo ""
+		echo "  [include]"
+		echo "      path = $GIT_ALIASES_TARGET"
+		echo ""
+		echo "You can open it with: nvim ~/.gitconfig"
+		echo "----------------------------------------"
 		;;
 	"nvim")
 		create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"

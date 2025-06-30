@@ -1,0 +1,12 @@
+[core]
+	editor = nvim
+
+[alias]
+	st = status -s
+	sta = status
+	co = commit -m
+	a  = add
+	aa = add -A
+	res = restore --staged
+	di = diff
+	dis = diff --staged
