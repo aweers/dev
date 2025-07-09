@@ -17,6 +17,65 @@ default-root-container-orientation = 'auto'
 
 automatically-unhide-macos-hidden-apps = true
 
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+    if.app-id = 'org.mozilla.firefox'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.ActivityMonitor'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+    if.app-id = 'org.whispersystems.signal-desktop'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+    if.app-id = 'org.zotero.zotero'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 6']
+
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    if.during-aerospace-startup = true
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -29,10 +88,6 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
-run = ["layout tiling"]
 
 # [key-mapping]
 # preset = 'colemak'
