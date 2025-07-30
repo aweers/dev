@@ -5,6 +5,7 @@
 	st = status -s
 	sta = status
 	co = commit -m
+	coa = commit --amend --no-edit
 	a  = add
 	aa = add -A
 	res = restore --staged
