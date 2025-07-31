@@ -3,7 +3,7 @@ require("mini.surround").setup()
 require("mini.pairs").setup()
 require("mini.files").setup({
 	mappings = {
-		close = "q",
+		close = "<Esc>",
 		go_in = "<Right>",
 		go_in_plus = "<C-Right>",
 		go_out = "<Left>",
