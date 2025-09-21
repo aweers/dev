@@ -1,4 +1,4 @@
-theme = Github-Dark-Default
+theme = Github Dark Default
 font-family = Iosevka Nerd Font
 font-size = 19
 background-opacity = 0.8
@@ -6,3 +6,6 @@ background-blur = 20
 mouse-hide-while-typing = true
 # window-decoration = false
 macos-titlebar-style = hidden
+custom-shader = shaders/cursor_blaze_no_trail.glsl
+custom-shader = shaders/cursor_smear.glsl
+#custom-shader = shaders/cursor_smear_fade.glsl
