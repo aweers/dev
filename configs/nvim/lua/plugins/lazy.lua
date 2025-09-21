@@ -130,7 +130,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -227,8 +227,8 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim",                        name = "catppuccin", priority = 1000 },
+	{ "bluz71/vim-moonfly-colors",              name = "moonfly",    lazy = false,   priority = 1000 },
 	{
 		"nvzone/typr",
 		dependencies = "nvzone/volt",
@@ -279,7 +279,7 @@ require("lazy").setup({
 			"TmuxNavigateRight",
 		},
 	},
-
+	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
 		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table

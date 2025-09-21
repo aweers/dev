@@ -1,6 +1,6 @@
 require("mini.ai").setup()
 require("mini.surround").setup()
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
 require("mini.files").setup({
 	mappings = {
 		close = "<Esc>",

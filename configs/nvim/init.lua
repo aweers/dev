@@ -68,6 +68,11 @@ vim.lsp.enable({
 
 vim.opt.conceallevel = 1 -- for obsidian.nvim
 
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = -1
+vim.o.foldenable = true
+
 require("keymaps")
 require("plugins.lazy")
 require("plugins.gitsigns")
@@ -75,6 +80,19 @@ require("plugins.mini")
 require("plugins.which-key")
 require("plugins.catppuccin")
 require("plugins.obsidian")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+local language_servers = vim.lsp.get_clients() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities
+    })
+end
+require('ufo').setup()
 
 -- vim.cmd.colorscheme "catppuccin"
 vim.cmd([[colorscheme moonfly]])
