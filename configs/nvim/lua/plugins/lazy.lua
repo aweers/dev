@@ -130,7 +130,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
-			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -227,8 +227,8 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "catppuccin/nvim",                        name = "catppuccin", priority = 1000 },
-	{ "bluz71/vim-moonfly-colors",              name = "moonfly",    lazy = false,   priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 	{
 		"nvzone/typr",
 		dependencies = "nvzone/volt",
@@ -257,11 +257,27 @@ require("lazy").setup({
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		-- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
+	},
+	{
+		"chomosuke/typst-preview.nvim",
+		ft = "typst",
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+	},
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+		},
 	},
 
 	ui = {

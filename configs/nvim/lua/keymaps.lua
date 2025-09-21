@@ -1,9 +1,18 @@
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+local map = vim.keymap.set
+local unmap = vim.keymap.del
 
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+
+map({ "n", "x", "v" }, "<C-Left>", "<cmd>:TmuxNavigateLeft<cr>", { silent = true, remap = false })
+map({ "n", "x", "v" }, "<C-Right>", "<cmd>:TmuxNavigateRight<cr>", { silent = true, remap = false })
+map({ "n", "x", "v" }, "<C-Down>", "<cmd>:TmuxNavigateDown<cr>", { silent = true, remap = false })
+map({ "n", "x", "v" }, "<C-Up>", "<cmd>:TmuxNavigateUp<cr>", { silent = true, remap = false })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -13,7 +22,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.keymap.set("n", "-", function()
+map("n", "-", function()
 	local buf_name = vim.api.nvim_buf_get_name(0)
 	local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
 	MiniFiles.open(path)
@@ -21,10 +30,12 @@ vim.keymap.set("n", "-", function()
 end, { desc = "Open Mini Files" })
 
 -- disable accidental Q key-press
-vim.keymap.set({ "n", "v" }, "q:", "<Nop>")
-vim.keymap.set("n", "Q", "<Nop>")
+map({ "n", "v" }, "q:", "<Nop>")
+map("n", "Q", "<Nop>")
 
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-vim.keymap.set("n", "<leader>f", function()
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "[F]ormat buffer" })
+
+map({ "n", "v", "x" }, "<leader>d", '"_d')

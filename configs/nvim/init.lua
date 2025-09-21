@@ -10,6 +10,8 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.mouse = ""
 vim.opt.showmode = false
+vim.opt.winborder = "rounded"
+vim.opt.swapfile = false
 
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
@@ -43,6 +45,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+vim.opt.smartindent = true
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -60,6 +63,7 @@ vim.lsp.enable({
 	"bashls",
 	"clangd",
 	"gopls",
+	"tinymist",
 })
 
 vim.opt.conceallevel = 1 -- for obsidian.nvim
