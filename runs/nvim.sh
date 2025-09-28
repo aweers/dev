@@ -13,13 +13,3 @@ else
 		brew install neovim
 	fi
 fi
-
-# Copy config files
-src="./configs/nvim"
-dest="$HOME/.config/nvim"
-
-echo "Deleting $dest"
-sudo rm -rf "$dest"
-
-echo "Copying $src to $dest"
-cp -r "$src" "$dest"
