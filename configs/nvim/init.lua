@@ -95,5 +95,6 @@ end
 require('ufo').setup()
 
 -- vim.cmd.colorscheme "catppuccin"
+vim.g.moonflyTransparent = true
 vim.cmd([[colorscheme moonfly]])
 vim.cmd(":Copilot disable")
