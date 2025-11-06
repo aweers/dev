@@ -279,6 +279,7 @@ require("lazy").setup({
 			"TmuxNavigateRight",
 		},
 	},
+	{ "neovim/nvim-lspconfig" },
 	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
