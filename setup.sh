@@ -79,8 +79,9 @@ for cmd in "${commands[@]}"; do
 		create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 		;;
 	"tmux")
-		create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-		create_symlink "$DOTFILES_DIR/tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
+		create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+		create_symlink "$DOTFILES_DIR/tmux/tmux.conf.local" "$HOME/.tmux.conf.local"
+		create_symlink "$DOTFILES_DIR/tmux/tmux.remote.conf" "$HOME/.config/tmux/tmux.remote.conf"
 		;;
 	"git")
 		GIT_ALIASES_TARGET="$HOME/.config/git/aliases"
