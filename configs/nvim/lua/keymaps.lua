@@ -8,7 +8,6 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-
 map({ "n", "x", "v" }, "<C-Left>", "<cmd>:TmuxNavigateLeft<cr>", { silent = true, remap = false })
 map({ "n", "x", "v" }, "<C-Right>", "<cmd>:TmuxNavigateRight<cr>", { silent = true, remap = false })
 map({ "n", "x", "v" }, "<C-Down>", "<cmd>:TmuxNavigateDown<cr>", { silent = true, remap = false })
@@ -39,3 +38,4 @@ map("n", "<leader>f", function()
 end, { desc = "[F]ormat buffer" })
 
 map({ "n", "v", "x" }, "<leader>d", '"_d')
+map({ "n" }, "<leader>gd", vim.lsp.buf.definition, { remap = false })
