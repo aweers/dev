@@ -1,10 +1,10 @@
 theme = Github Dark Default
 font-family = Iosevka Nerd Font
 font-size = 19
-background-opacity = 0.8
-background-blur = 20
-background-image=~/Downloads/gemini_motivation_rectangle.png
-background-image-opacity=0.1
+#background-opacity = 0.8
+#background-blur = 20
+#background-image=~/Downloads/gemini_motivation_rectangle.png
+background-image-opacity=0.04
 mouse-hide-while-typing = true
 # window-decoration = false
 macos-titlebar-style = hidden
