@@ -58,6 +58,7 @@ vim.opt.scrolloff = 8
 
 vim.lsp.enable({
 	"pyright",
+	-- "basedpyright",
 	"ruff",
 	"luals",
 	"bashls",
